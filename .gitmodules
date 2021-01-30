@@ -1,0 +1,3 @@
+[submodule "include/core"]
+	path = include/core
+	url = https://github.com/structurizr/dotnet
