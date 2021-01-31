@@ -1,14 +1,14 @@
 ﻿@startuml
 title oscript.web - Deployment
 caption Диаграмма развертывания с проверкой доступности
-node "Github Releases" <<AmazonS3>> as 6 {
-  artifact "jsondatabase" <<Container>> as 9
+node "Github Releases" <<AmazonS3>> as 8 {
+  artifact "jsondatabase" <<Container>> as 11
 }
-node "Heroku Application" <<micro-instance>> as 5 {
-  node "ASP.NET Application" <<Docker>> as 7 {
-    artifact "hub.oscript.io" <<Container>> as 8
+node "Heroku Application" <<micro-instance>> as 7 {
+  node "ASP.NET Application" <<Docker>> as 9 {
+    artifact "hub.oscript.io" <<Container>> as 10
   }
 }
-8 ..> 9 : Только чтение <<JSONRead>>
+10 ..> 11 : Только чтение <<JSONRead>>
 @enduml
 

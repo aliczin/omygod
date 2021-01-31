@@ -1,6 +1,8 @@
 using Structurizr;
 using ScriptEngine.Machine.Contexts;
 
+using Structurizr.IO.C4PlantUML.ModelExtensions;
+
 namespace OMyGod
 {
     [ContextClass("Контейнер", "Container")]
@@ -14,6 +16,12 @@ namespace OMyGod
         public void AddTag(string tag)
         {
             container.AddTags(tag);
+        }
+
+        [ContextMethod("УстановитьКакБазуДанных", "SetAsDatabase")]
+        public void SetAsDatabase()
+        {
+            container.SetIsDatabase(true);
         }
 
         [ContextMethod("Использует", "Use")]

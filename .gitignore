@@ -267,5 +267,7 @@ src/.axoCover
 NUnitTests/bin/
 NUnitTests/obj
 bdd-log.xml
-omygod-1.0.0.ospx
+omygod-*.ospx
 tests.xml
+
+out

@@ -1,0 +1,35 @@
+﻿@startuml
+!includeurl https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/C4_Context.puml
+
+' Structurizr.SystemContextView: АрхитектураСистемы
+title oscript.web - System Context
+
+LAYOUT_WITH_LEGEND()
+
+Enterprise_Boundary(ЭкосистемаOScript, "Экосистема OScript") {
+  System(oscript.web__348c725, "oscript.web", "платформа для развертывания\nсвоих Web сервисов на базе ASP.Net")
+  Person(Пользователь__3455ce, "Пользователь", "Любой пользователь сайта")
+Rel_Right(Пользователь__3455ce, oscript.web__348c725, "WWW")
+}
+@enduml
+
+@startuml
+!includeurl https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/C4_Deployment.puml
+
+' Structurizr.DeploymentView: Развертывание
+title oscript.web - Deployment
+
+LAYOUT_WITH_LEGEND()
+
+Node(Deployment__Default__GithubReleases__b71fd5, "Github Releases", "AmazonS3") {
+  Container(oscript.web__jsondatabase1__d5a014, "jsondatabase", "JSONDB", "База данных JSON")
+}
+Node(Deployment__Default__HerokuApplication__f7e717, "Heroku Application", "micro-instance") {
+  Node(Deployment__Default__HerokuApplication__ASP.NETApplication__70a1e, "ASP.NET Application", "Docker") {
+    Container(oscript.web__hub.oscript.io1__fb4aac, "hub.oscript.io", "ASP.NET 3.x", "Реальный веб сервер с поддержкой HTML
+форм и обеспечивающий чтение списка пакетов")
+  }
+}
+Rel(oscript.web__hub.oscript.io1__fb4aac, oscript.web__jsondatabase1__d5a014, "Только чтение", "JSONRead")
+@enduml
+

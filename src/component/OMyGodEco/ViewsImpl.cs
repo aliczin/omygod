@@ -19,6 +19,17 @@ namespace OMyGod
             );
         }
 
+        [ContextMethod("СоздатьСистемноеПредставление", "CreateSystemContextView")]
+        public SystemViewImpl CreateSystemContextView(SoftwareSystemImpl system,
+            string key, string description)
+        {
+            return new SystemViewImpl(
+                _createdWorkspace.Views.CreateSystemContextView(
+                    system.link, key, description 
+                )
+            );
+        }
+
         [ContextMethod("ДобавитьСтильЦветаЭлементу", "AddColorStyleToElement")]
         public void AddColorStyleToElement(string _value)
         {

@@ -13,6 +13,7 @@ namespace OMyGod
         [ContextMethod("ДобавитьКонтейнер", "AddContainer")]
         public ContainerImpl AddContainer(string name, string description, string technology)
         {
+
             return new ContainerImpl(
                 softwareSystem.AddContainer(name, description, technology)
             );

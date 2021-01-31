@@ -9,6 +9,8 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 
 using Structurizr.IO.PlantUML;
+using Structurizr.IO.C4PlantUML;
+using Structurizr.IO.C4PlantUML.ModelExtensions;
 
 namespace OMyGod
 {
@@ -76,8 +78,22 @@ namespace OMyGod
             StringWriter stringWriter = new StringWriter();
             PlantUMLWriter plantUMLWriter = new PlantUMLWriter();
             plantUMLWriter.Write(_createdWorkspace, stringWriter);  
-
+            
             return stringWriter.ToString();
+        }
+
+        [ContextMethod("ПолучитьПредставлениеUMLC4", "GetPresentationUMLС4")]
+        public string GetPresentationUMLС4()
+        {
+            string C4String;
+            using (var stringWriter = new StringWriter())
+            {
+                var plantUmlWriter = new C4PlantUmlWriter();
+                plantUmlWriter.CustomBaseUrl = "https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/";
+                plantUmlWriter.Write(_createdWorkspace, stringWriter);
+                C4String = stringWriter.ToString();
+            }                
+            return C4String;
         }
 
 
