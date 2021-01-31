@@ -38,8 +38,16 @@ namespace OMyGod
         private Structurizr.Workspace _createdWorkspace;
         public OSZWorkspace(Structurizr.Workspace createdWorkspace)
         {
-            _createdWorkspace = createdWorkspace;
+            this._createdWorkspace = createdWorkspace;
+            this.Model = new ModelImpl(this._createdWorkspace);
+            this.Views = new ViewsImpl(this._createdWorkspace);
         }
+
+        [ContextProperty("Модель", "Model")]
+        public ModelImpl Model {get; private set;}
+        
+        [ContextProperty("Представления", "Views")]
+        public ViewsImpl Views {get; private set;}
 
         [ContextMethod("ПолучитьПредставлениеJSON", "GetPresentationJSON")]
         public string GetPresentationJSON()
