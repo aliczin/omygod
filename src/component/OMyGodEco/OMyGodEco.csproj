@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="OneScript" Version="1.5.0" />
     <PackageReference Include="OneScript.StandardLibrary" Version="1.5.0" />
+    <PackageReference Include="Structurizr.PlantUML" Version="0.9.3" />
     
     <ProjectReference Include="..\..\..\include\core\Structurizr.Client\Structurizr.Client.csproj" />
 

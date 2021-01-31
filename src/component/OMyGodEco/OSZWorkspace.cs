@@ -8,6 +8,8 @@ using System.IO;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
 
+using Structurizr.IO.PlantUML;
+
 namespace OMyGod
 {
      internal class PaperSizeJsonConverter : JsonConverter
@@ -39,13 +41,13 @@ namespace OMyGod
         public OSZWorkspace(Structurizr.Workspace createdWorkspace)
         {
             this._createdWorkspace = createdWorkspace;
-            this.Model = new ModelImpl(this._createdWorkspace);
+            this.Model = new ModelImpl(this._createdWorkspace.Model);
             this.Views = new ViewsImpl(this._createdWorkspace);
         }
 
         [ContextProperty("Модель", "Model")]
         public ModelImpl Model {get; private set;}
-        
+
         [ContextProperty("Представления", "Views")]
         public ViewsImpl Views {get; private set;}
 
@@ -67,6 +69,17 @@ namespace OMyGod
             
             return stringWriter.ToString();
         }
+
+        [ContextMethod("ПолучитьПредставлениеUML", "GetPresentationUML")]
+        public string GetPresentationUML()
+        {
+            StringWriter stringWriter = new StringWriter();
+            PlantUMLWriter plantUMLWriter = new PlantUMLWriter();
+            plantUMLWriter.Write(_createdWorkspace, stringWriter);  
+
+            return stringWriter.ToString();
+        }
+
 
         [ScriptConstructor]
         public static OSZWorkspace Constructor(string name, string description)

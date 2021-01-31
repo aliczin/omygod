@@ -63,4 +63,5 @@
         .ВключитьФайл("bin/OMyGodEco.dll")
         .ВключитьФайл("bin/Structurizr.Core.dll")
         .ВключитьФайл("bin/Structurizr.Client.dll")       
+        .ВключитьФайл("bin/Structurizr.PlantUML.dll")
 ;
