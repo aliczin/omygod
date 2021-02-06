@@ -7,7 +7,7 @@ namespace OMyGod
     {
         private Model _createdModel;
 
-        [ContextMethod("ДобавитьПредприятие", "AddEnterprise")]
+        [ContextMethod("ДобавитьПлатформуПредприятия", "AddEnterprisePlatform")]
         public EnterpriseImpl AddEnterprise(string name)
         {
             _createdModel.Enterprise = new Enterprise(name);
