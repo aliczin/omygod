@@ -30,6 +30,6 @@ jobs:
         with:
           name: 'OMyGod.zip'
           path: |
-            "./*.signature"
-            "./*.pdf"
+            "**/AlexeyLustin*.signature"
+            "**/OMYGod-*.pdf"
           retention-days: 14
