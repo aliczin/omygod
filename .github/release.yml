@@ -1,0 +1,52 @@
+# Основано на https://github.com/silverbulleters/oscript-actions-template/blob/main/.github/workflows/release.yml
+# с творческой переработкой
+
+name: Подготовка релиза
+# Только события создания и изменения релиза
+on:
+    release:
+        types: [published, edited]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        oscript_version: ['1.4.0']
+    steps:
+      # Загрузка проекта
+      - name: Актуализация
+        uses: actions/checkout@v2
+
+      # Установка OneScript конкретной версии
+      - name: Установка OneScript
+        uses: otymko/setup-onescript@v1.1
+        with:
+          version: ${{ matrix.oscript_version }}  
+
+      # Установка зависимостей пакета
+      - name: Установка зависимостей
+        run: |
+          opm install opm
+          opm install
+      
+      - name: Сборка пакета
+        run: opm build
+
+      - name: Создание цифровой подписи документации
+        uses: shrink/actions-document-sign@v1
+        id: create-signature      
+
+      - name: Публикация PDF документа
+        uses: shrink/actions-document-publish@v1
+        id: publish-document
+        with: 
+          sources: '${{ steps.create-signature.outputs.signature }} ./OMYGod.md'
+
+      - name: Заливка в релиз
+        uses: AButler/upload-release-assets@v2.0
+        with:
+          files: './*.ospx;./*.pdf'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
