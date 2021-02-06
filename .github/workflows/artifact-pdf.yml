@@ -17,9 +17,6 @@ jobs:
         id: publish-document
         with:
           sources: './OMYGod.md'
-      - name: Rename PDF
-        run: |
-          mv ${{ steps.publish-document.outputs.pdf }} ./OMYGod-NigthBuild.pdf
       - name: Create Electronic Signature
         uses: shrink/actions-document-sign@v1
         id: create-signature
@@ -29,5 +26,5 @@ jobs:
         with:
           name: 'OMyGod.zip'
           path: |
-            ./OMYGod-NigthBuild.pdf
+            ${{ steps.publish-document.outputs.pdf }}
             ${{ steps.create-signature.outputs.signature }}
