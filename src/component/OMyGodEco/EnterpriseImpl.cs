@@ -3,7 +3,7 @@ using ScriptEngine.Machine.Contexts;
 
 namespace OMyGod
 {
-    [ContextClass("Предприятие","Enterprise")]
+    [ContextClass("ПлатформаПредприятия","EnterprisePlatform")]
     public class EnterpriseImpl : AutoContext <EnterpriseImpl>
     {
         private Enterprise enterprise;

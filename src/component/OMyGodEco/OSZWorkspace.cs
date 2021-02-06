@@ -93,9 +93,9 @@ namespace OMyGod
                 plantUmlWriter.Write(_createdWorkspace, stringWriter);
                 C4String = stringWriter.ToString();
             }                
+
             return C4String;
         }
-
 
         [ScriptConstructor]
         public static OSZWorkspace Constructor(string name, string description)
