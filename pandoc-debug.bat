@@ -1,0 +1,1 @@
+pandoc --verbose -f markdown+tex_math_single_backslash --variable mainfont="Calibri" --variable sansfont="Calibri" --variable monofont="Calibri" --include-in-header=./docs/header-includes.yaml -o .\OMYGod.pdf --pdf-engine=%USERPROFILE%\scoop\apps\latex\current\texmfs\install\miktex\bin\x64\xelatex .\OMYGod.md

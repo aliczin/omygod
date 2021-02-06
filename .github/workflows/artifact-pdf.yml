@@ -30,7 +30,7 @@ jobs:
         with:
           name: 'OMyGod.zip'
           path: |
-            ${{steps.publish-document.outputs.pdf}}
+            ${{ steps.publish-document.outputs.pdf }}
             ${{ steps.create-signature.outputs.signature }}"
             AlexeyLustin*.signature
             OMYGod-*.pdf

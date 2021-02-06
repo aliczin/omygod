@@ -1,0 +1,269 @@
+﻿{
+  "model": {
+    "enterprise": {
+      "name": "Экосистема OScript"
+    },
+    "people": [
+      {
+        "location": "Unspecified",
+        "name": "Пользователь",
+        "description": "Любой пользователь сайта",
+        "relationships": [
+          {
+            "description": "WWW",
+            "sourceId": "1",
+            "destinationId": "2",
+            "id": "3",
+            "tags": "Relationship,Synchronous",
+            "properties": {
+              "Direction": "Right"
+            },
+            "perspectives": []
+          }
+        ],
+        "id": "1",
+        "tags": "Element,Person",
+        "properties": {},
+        "perspectives": []
+      }
+    ],
+    "softwareSystems": [
+      {
+        "location": "Unspecified",
+        "containers": [
+          {
+            "technology": "ASP.NET 3.x",
+            "components": [],
+            "name": "hub.oscript.io",
+            "description": "Реальный веб сервер с поддержкой HTML\nформ и обеспечивающий чтение списка пакетов",
+            "relationships": [
+              {
+                "description": "Только чтение",
+                "sourceId": "4",
+                "destinationId": "5",
+                "technology": "JSONRead",
+                "id": "6",
+                "tags": "Relationship,Synchronous",
+                "properties": {},
+                "perspectives": []
+              }
+            ],
+            "id": "4",
+            "tags": "Element,Container",
+            "properties": {},
+            "perspectives": []
+          },
+          {
+            "technology": "JSONDB",
+            "components": [],
+            "name": "jsondatabase",
+            "description": "База данных JSON",
+            "relationships": [],
+            "id": "5",
+            "tags": "Element,Container,Database",
+            "properties": {},
+            "perspectives": []
+          }
+        ],
+        "name": "oscript.web",
+        "description": "платформа для развертывания\\nсвоих Web сервисов на базе ASP.Net",
+        "relationships": [],
+        "id": "2",
+        "tags": "Element,Software System",
+        "properties": {},
+        "perspectives": []
+      }
+    ],
+    "deploymentNodes": [
+      {
+        "technology": "micro-instance",
+        "instances": 1,
+        "children": [
+          {
+            "technology": "Docker",
+            "instances": 1,
+            "children": [],
+            "infrastructureNodes": [],
+            "containerInstances": [
+              {
+                "containerId": "4",
+                "instanceId": 1,
+                "healthChecks": [
+                  {
+                    "name": "Сайт запущен",
+                    "url": "https://hub.oscript.io/health",
+                    "headers": {},
+                    "interval": 60,
+                    "timeout": 0
+                  }
+                ],
+                "environment": "Default",
+                "relationships": [
+                  {
+                    "description": "Только чтение",
+                    "sourceId": "10",
+                    "destinationId": "11",
+                    "technology": "JSONRead",
+                    "linkedRelationshipId": "6",
+                    "id": "12",
+                    "tags": "",
+                    "properties": {},
+                    "perspectives": []
+                  }
+                ],
+                "id": "10",
+                "tags": "Container Instance",
+                "properties": {},
+                "perspectives": []
+              }
+            ],
+            "environment": "Default",
+            "name": "ASP.NET Application",
+            "description": "Контур для запуска своих ASP.NET приложений",
+            "relationships": [],
+            "id": "9",
+            "tags": "Element,Deployment Node",
+            "properties": {},
+            "perspectives": []
+          }
+        ],
+        "infrastructureNodes": [],
+        "containerInstances": [],
+        "environment": "Default",
+        "name": "Heroku Application",
+        "description": "",
+        "relationships": [],
+        "id": "7",
+        "tags": "Element,Deployment Node",
+        "properties": {},
+        "perspectives": []
+      },
+      {
+        "technology": "AmazonS3",
+        "instances": 1,
+        "children": [],
+        "infrastructureNodes": [],
+        "containerInstances": [
+          {
+            "containerId": "5",
+            "instanceId": 1,
+            "healthChecks": [
+              {
+                "name": "Релизы можно скачивать",
+                "url": "https://github.com/EvilBeaver/os-hub-frontend/releases",
+                "headers": {},
+                "interval": 60,
+                "timeout": 0
+              }
+            ],
+            "environment": "Default",
+            "relationships": [],
+            "id": "11",
+            "tags": "Container Instance",
+            "properties": {},
+            "perspectives": []
+          }
+        ],
+        "environment": "Default",
+        "name": "Github Releases",
+        "description": "Статическое хранилище собранных пакетов",
+        "relationships": [],
+        "id": "8",
+        "tags": "Element,Deployment Node",
+        "properties": {},
+        "perspectives": []
+      }
+    ]
+  },
+  "views": {
+    "systemLandscapeViews": [],
+    "systemContextViews": [
+      {
+        "animations": [],
+        "key": "АрхитектураСистемы",
+        "softwareSystemId": "2",
+        "description": "Системное отображение компонентов",
+        "elements": [
+          {
+            "properties": {},
+            "id": "2"
+          },
+          {
+            "properties": {},
+            "id": "1"
+          }
+        ],
+        "relationships": [
+          {
+            "properties": {},
+            "id": "3"
+          }
+        ]
+      }
+    ],
+    "containerViews": [],
+    "componentViews": [],
+    "dynamicViews": [],
+    "deploymentViews": [
+      {
+        "animations": [],
+        "key": "Развертывание",
+        "softwareSystemId": "2",
+        "description": "Диаграмма развертывания с проверкой доступности",
+        "elements": [
+          {
+            "properties": {},
+            "id": "10"
+          },
+          {
+            "properties": {},
+            "id": "9"
+          },
+          {
+            "properties": {},
+            "id": "7"
+          },
+          {
+            "properties": {},
+            "id": "11"
+          },
+          {
+            "properties": {},
+            "id": "8"
+          }
+        ],
+        "relationships": [
+          {
+            "properties": {},
+            "id": "12"
+          }
+        ]
+      }
+    ],
+    "filteredViews": [],
+    "configuration": {
+      "styles": {
+        "relationships": [],
+        "elements": [
+          {
+            "tag": "Element",
+            "color": "#ffffff"
+          }
+        ]
+      },
+      "branding": {},
+      "terminology": {},
+      "viewSortOrder": "Default"
+    }
+  },
+  "documentation": {
+    "sections": [],
+    "decisions": [],
+    "images": []
+  },
+  "name": "Основанное на HTTP протоколе\nпроверка доступности сервисов",
+  "description": "пример того как использовать основанную на HTTP проверку сервисов",
+  "configuration": {
+    "users": []
+  }
+}

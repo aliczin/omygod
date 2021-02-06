@@ -1,3 +1,6 @@
 {
-    "markdown-preview-enhanced.imageMagickPath": "magick"
+    "markdown-preview-enhanced.imageMagickPath": "magick",
+    "markdown-preview-enhanced.pandocArguments": "--variable mainfont=Calibri, --variable sansfont=Calibri, --variable monofont=Calibri, --include-in-header=./header-includes.yaml",
+    "markdown-preview-enhanced.latexEngine": "%USERPROFILE%\\scoop\\apps\\latex\\current\\texmfs\\install\\miktex\\bin\\x64\\xelatex"
+
 }
