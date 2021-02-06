@@ -12,14 +12,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Create Electronic Signature
+        uses: shrink/actions-document-sign@v1
+        id: create-signature
       - name: Publish PDF Document
         uses: shrink/actions-document-publish@v1
         id: publish-document
         with:
-          sources: './OMYGod.md'
-      - name: Create Electronic Signature
-        uses: shrink/actions-document-sign@v1
-        id: create-signature
+          sources: '${{ steps.create-signature.outputs.signature }} ./OMYGod.md'
       - name: Upload Document
         uses: actions/upload-artifact@v2
         id: upload-document
@@ -28,3 +28,4 @@ jobs:
           path: |
             ${{ steps.publish-document.outputs.pdf }}
             ${{ steps.create-signature.outputs.signature }}
+          retention-days: 14
