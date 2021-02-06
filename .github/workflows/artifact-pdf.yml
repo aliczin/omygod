@@ -22,14 +22,16 @@ jobs:
           sources: '${{ steps.create-signature.outputs.signature }} ./OMYGod.md'
       - name: Rename Artifact
         run: |
-          cp "${{ steps.publish-document.outputs.pdf }}" "OMYGod-NigthBuild.pdf"
-          cp "${{ steps.create-signature.outputs.signature }}" "AlexeyLustin.signature"
+          cp ${{ steps.publish-document.outputs.pdf }} OMYGod-NigthBuild.pdf
+          cp ${{ steps.create-signature.outputs.signature }} AlexeyLustin.signature
       - name: Upload Document
         uses: actions/upload-artifact@v2
         id: upload-document
         with:
           name: 'OMyGod.zip'
           path: |
-            "AlexeyLustin*.signature"
-            "OMYGod-*.pdf"
+            ${{steps.publish-document.outputs.pdf}}
+            ${{ steps.create-signature.outputs.signature }}"
+            AlexeyLustin*.signature
+            OMYGod-*.pdf
           retention-days: 14
