@@ -97,6 +97,29 @@ namespace OMyGod
             return C4String;
         }
 
+        [ContextMethod("ЭкспортироватьВоВсеФорматы", "ExportToAllFormats")]
+        public void ExportToAllFormats(string fullPath, string filePrefix)
+        {
+            Directory.CreateDirectory(fullPath);
+            using (StreamWriter outputFilejson = new StreamWriter(
+                    Path.Combine(fullPath, filePrefix + ".json"), false))
+            {
+                outputFilejson.WriteLine(GetPresentationJSON());
+            }
+
+            using (StreamWriter outputFileC4 = new StreamWriter(
+                    Path.Combine(fullPath, filePrefix + "-C4.plantuml"), false))
+            {
+                outputFileC4.WriteLine(GetPresentationUMLС4());
+            }
+
+            using (StreamWriter outputFileUML = new StreamWriter(
+                    Path.Combine(fullPath, filePrefix + ".plantuml"), false))
+            {
+                outputFileUML.WriteLine(GetPresentationUML());
+            }
+        }
+
         [ScriptConstructor]
         public static OSZWorkspace Constructor(string name, string description)
         {
