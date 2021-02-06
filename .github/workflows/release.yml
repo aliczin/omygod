@@ -47,7 +47,6 @@ jobs:
         id: publish-document
         with: 
           sources: '${{ steps.create-signature.outputs.signature }} ./OMYGod.md'
-
       - name: Заливка в релиз
         uses: AButler/upload-release-assets@v2.0
         with:
