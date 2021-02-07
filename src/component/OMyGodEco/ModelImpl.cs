@@ -43,6 +43,7 @@ namespace OMyGod
         public ModelImpl(Model createdModel)
         {
             _createdModel = createdModel;
+            _createdModel.Enterprise = new Enterprise("OMyGod");
         }
     }
 }

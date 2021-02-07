@@ -14,7 +14,7 @@ using Structurizr.IO.C4PlantUML.ModelExtensions;
 
 namespace OMyGod
 {
-     internal class PaperSizeJsonConverter : JsonConverter
+    internal class PaperSizeJsonConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {
@@ -42,21 +42,21 @@ namespace OMyGod
         private Structurizr.Workspace _createdWorkspace;
         public OSZWorkspace(Structurizr.Workspace createdWorkspace)
         {
-            this._createdWorkspace = createdWorkspace;
-            this.Model = new ModelImpl(this._createdWorkspace.Model);
-            this.Views = new ViewsImpl(this._createdWorkspace);
+            _createdWorkspace = createdWorkspace;
+            Model = new ModelImpl(_createdWorkspace.Model);
+            Views = new ViewsImpl(_createdWorkspace);
         }
 
         [ContextProperty("Модель", "Model")]
-        public ModelImpl Model {get; private set;}
+        public ModelImpl Model { get; private set; }
 
         [ContextProperty("Представления", "Views")]
-        public ViewsImpl Views {get; private set;}
+        public ViewsImpl Views { get; private set; }
 
         [ContextMethod("ПолучитьПредставлениеJSON", "GetPresentationJSON")]
         public string GetPresentationJSON()
         {
-            
+
             StringWriter stringWriter = new StringWriter();
 
             string json = JsonConvert.SerializeObject(_createdWorkspace,
@@ -66,9 +66,8 @@ namespace OMyGod
                 new PaperSizeJsonConverter()
                 );
 
-
             stringWriter.Write(json);
-            
+
             return stringWriter.ToString();
         }
 
@@ -77,22 +76,34 @@ namespace OMyGod
         {
             StringWriter stringWriter = new StringWriter();
             PlantUMLWriter plantUMLWriter = new PlantUMLWriter();
-            plantUMLWriter.Write(_createdWorkspace, stringWriter);  
-            
+            plantUMLWriter.Write(_createdWorkspace, stringWriter);
+
             return stringWriter.ToString();
         }
 
         [ContextMethod("ПолучитьПредставлениеUMLC4", "GetPresentationUMLС4")]
         public string GetPresentationUMLС4()
         {
-            string C4String;
-            using (var stringWriter = new StringWriter())
+            string C4String = "";
+            try
             {
-                var plantUmlWriter = new C4PlantUmlWriter();
-                plantUmlWriter.CustomBaseUrl = "https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/";
-                plantUmlWriter.Write(_createdWorkspace, stringWriter);
-                C4String = stringWriter.ToString();
-            }                
+                using (var stringWriter = new StringWriter())
+                {
+                    var plantUmlWriter = new C4PlantUmlWriter();
+                    plantUmlWriter.CustomBaseUrl = "https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/";
+                    plantUmlWriter.Write(
+                        _createdWorkspace, stringWriter
+                    );
+                    C4String = stringWriter.ToString();
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+                throw new ScriptEngine.Machine.RuntimeException(
+                    "GetPresentationUMLС4 Render Exception",ex
+                );
+            }
 
             return C4String;
         }
@@ -123,7 +134,9 @@ namespace OMyGod
         [ScriptConstructor]
         public static OSZWorkspace Constructor(string name, string description)
         {
-            Structurizr.Workspace workspace = new Structurizr.Workspace(name,description);
+            Structurizr.Workspace workspace = 
+                new Structurizr.Workspace(name, description);
+
             return new OSZWorkspace(workspace);
         }
     }

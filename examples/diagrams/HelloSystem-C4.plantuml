@@ -1,0 +1,16 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/kirchsth/C4-PlantUML/master/C4_Context.puml
+
+' Structurizr.SystemContextView: Ынтырпрайз архитектор
+title OMyGod - System Context
+
+LAYOUT_WITH_LEGEND()
+
+Enterprise_Boundary(OMyGod, "OMyGod") {
+  System(OMyGod__f96fc5, "OMyGod", "Пакет для проектирования комплектов систем")
+  Person(Архитектор__1a3aeba, "Архитектор", "Системный архитектор")
+Rel(Архитектор__1a3aeba, OMyGod__f96fc5, "VSCode")
+}
+@enduml
+
+

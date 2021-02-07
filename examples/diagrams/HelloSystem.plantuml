@@ -1,0 +1,9 @@
+@startuml
+title OMyGod - System Context
+caption Системное представление продукта-системы
+component "OMyGod" <<Software System>> as 2
+actor "Архитектор" <<Person>> as 1
+1 ..> 2 : VSCode
+@enduml
+
+

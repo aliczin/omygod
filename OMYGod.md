@@ -20,7 +20,7 @@ output:
 Примерно таких:
   
 
-![](/assets/880b27b49f124e12bede3a32a097856e0.png?0.1798049859206705)  
+![](/assets/880b27b49f124e12bede3a32a097856e0.png?0.5461435939434636)  
   
 А откуда берется знание о кубиках ? Как понять куда нарисовать стрелочку ? Особенно если ты бывший программист / системный администратор / инженер по безопасности.
   
@@ -56,6 +56,9 @@ output:
   
 И вот для чего такие сложности ? Кому вообще нужен такой подход ? Ведь намного проще поставить Birtix24, купить 1С конфигурацию, прикупить 1 принтер, один Microtic-hex, Zyxel WiFi и один компьютер - и вот у тебя уже Enterprise - безо всяких архитекторов.
   
-Хуже того - вот в стандарте на должность написано [E/04.5 Оценка и выбор архитектуры развертывания каждого компонента](https://profstandart.rosmintrud.ru/obshchiy-informatsionnyy-blok/natsionalnyy-reestr-professionalnykh-standartov/reestr-trudovyh-funkcij/index.php?ELEMENT_ID=56914&CODE=56914 ) - это трудовая функция. Но тот кто читал про DevOps и LXC
+Хуже того - вот в стандарте на должность написано [E/04.5 Оценка и выбор архитектуры развертывания каждого компонента](https://profstandart.rosmintrud.ru/obshchiy-informatsionnyy-blok/natsionalnyy-reestr-professionalnykh-standartov/reestr-trudovyh-funkcij/index.php?ELEMENT_ID=56914&CODE=56914 ) - это трудовая функция. Но тот кто читал про DevOps и LXC уже примерно понимает или догадывается куда я веду.
+  
+
+![](/assets/880b27b49f124e12bede3a32a097856e1.png?0.3659754962167594)  
   
   

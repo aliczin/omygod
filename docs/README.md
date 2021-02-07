@@ -61,5 +61,7 @@ export_on_save:
 
 И вот для чего такие сложности ? Кому вообще нужен такой подход ? Ведь намного проще поставить Birtix24, купить 1С конфигурацию, прикупить 1 принтер, один Microtic-hex, Zyxel WiFi и один компьютер - и вот у тебя уже Enterprise - безо всяких архитекторов.
 
-Хуже того - вот в стандарте на должность написано [E/04.5 Оценка и выбор архитектуры развертывания каждого компонента](https://profstandart.rosmintrud.ru/obshchiy-informatsionnyy-blok/natsionalnyy-reestr-professionalnykh-standartov/reestr-trudovyh-funkcij/index.php?ELEMENT_ID=56914&CODE=56914) - это трудовая функция. Но тот кто читал про DevOps и LXC
+Хуже того - вот в стандарте на должность написано [E/04.5 Оценка и выбор архитектуры развертывания каждого компонента](https://profstandart.rosmintrud.ru/obshchiy-informatsionnyy-blok/natsionalnyy-reestr-professionalnykh-standartov/reestr-trudovyh-funkcij/index.php?ELEMENT_ID=56914&CODE=56914) - это трудовая функция. Но тот кто читал про DevOps и LXC уже примерно понимает или догадывается куда я веду.
+
+@import "../examples/diagrams/HelloSystem-C4.plantuml"
 
