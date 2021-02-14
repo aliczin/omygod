@@ -36,6 +36,10 @@ namespace OMyGod
         }
     }
 
+    /// <summary>
+    /// Рабочее пространство архитектора. 
+    /// используется для определения системной логики взаимодествия платформ и систем.
+    /// </summary>
     [ContextClass("РабочееПространствоАрхитектора", "ArcitectWorkspace")]
     public class OSZWorkspace : AutoContext<OSZWorkspace>
     {
@@ -47,8 +51,20 @@ namespace OMyGod
             Views = new ViewsImpl(_createdWorkspace);
         }
 
+        [ContextProperty("Наименование", "Name")]
+        public string Name {
+            get { return _createdWorkspace.Name; } set {_createdWorkspace.Name = Name;} 
+        }
+        [ContextProperty("Описание", "Description")]
+        public string Description {
+            get { return _createdWorkspace.Description; } 
+            set {_createdWorkspace.Description = Description;} 
+        }
+
         [ContextProperty("Модель", "Model")]
         public ModelImpl Model { get; private set; }
+
+        
 
         [ContextProperty("Представления", "Views")]
         public ViewsImpl Views { get; private set; }

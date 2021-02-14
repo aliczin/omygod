@@ -9,7 +9,7 @@ namespace OMyGod
     public class ContainerImpl : AutoContext<ContainerImpl>
     {
         private Container container;
-
+    
         public Container link {get { return container; } }
 
         [ContextMethod("ДобавитьМетку", "AddTag")]
