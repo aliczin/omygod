@@ -30,14 +30,20 @@ namespace OMyGod
             );
         }
 
-        [ContextMethod("СоздатьСистемныйЛандшафт", " CreateSystemsLandscape")]
+        [ContextMethod("СоздатьСистемныйЛандшафт", "CreateSystemsLandscape")]
         public SystemLandscapeViewImpl CreateSystemLandscapeView(string key, string description)
         {
-            return new SystemLandscapeViewImpl(
-                _createdWorkspace.Views.CreateSystemLandscapeView(
-                    key, description 
-                )
-            );
+            try
+            {
+                var view = _createdWorkspace.Views.CreateSystemLandscapeView(
+                    key, description);
+                return new SystemLandscapeViewImpl(view);
+
+            }
+            catch (System.Exception ex)
+            {
+                throw new ScriptEngine.Machine.RuntimeException("Error on create landscape !!! " + ex.Message);
+            }
         }
 
         [ContextMethod("ДобавитьСтильЦветаЭлементу", "AddColorStyleToElement")]

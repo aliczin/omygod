@@ -14,10 +14,17 @@ namespace OMyGod
             systemLandscapeView.AddAllElements();
         }
 
-
-        public SystemLandscapeViewImpl(SystemLandscapeView systemLandscapeView)
+        [ContextMethod("ДобавитьВсё", "AddAll")]
+        public void AddAll()
         {
-            this.systemLandscapeView = systemLandscapeView;
+            systemLandscapeView.AddAllPeople();
+            systemLandscapeView.AddAllElements();
+        }
+
+
+        public SystemLandscapeViewImpl(SystemLandscapeView _systemLandscapeView)
+        {
+            systemLandscapeView = _systemLandscapeView;
         }
     }
 }
