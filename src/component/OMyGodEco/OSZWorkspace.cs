@@ -51,20 +51,47 @@ namespace OMyGod
             Views = new ViewsImpl(_createdWorkspace);
         }
 
+        /// <summary>
+        /// Наименование пространства
+        /// </summary>
+        /// <value>Наименование</value>
         [ContextProperty("Наименование", "Name")]
         public string Name {
             get { return _createdWorkspace.Name; } set {_createdWorkspace.Name = Name;} 
         }
+
+        /// <summary>
+        /// Полное описание пространства
+        /// </summary>
+        /// <value>Описание</value>
         [ContextProperty("Описание", "Description")]
         public string Description {
             get { return _createdWorkspace.Description; } 
             set {_createdWorkspace.Description = Description;} 
         }
 
+        /// <summary>
+        /// Объект доступа к моделированию сущностей
+        /// </summary>
+        /// <value>Модель</value>
         [ContextProperty("Модель", "Model")]
         public ModelImpl Model { get; private set; }
 
-        
+        /// <summary>
+        /// Объект доступа к моделированию сущностей. Ссылается на Модель
+        /// создан как синоним для удобства оперирования в исходдном коде архитектора 
+        /// </summary>
+        /// <value>Моделирование</value>
+        [ContextProperty("Моделирование", "Modeling")]
+        public ModelImpl Modeling { get { return Model;} }
+
+        /// <summary>
+        /// Объект доступа к моделированию сущностей. Ссылается на Модель
+        /// создан как синоним для удобства оперирования в исходдном коде архитектора 
+        /// </summary>
+        /// <value>Модели</value>
+        [ContextProperty("Модели", "Models")]
+        public ModelImpl Models { get { return Model;} }
 
         [ContextProperty("Представления", "Views")]
         public ViewsImpl Views { get; private set; }

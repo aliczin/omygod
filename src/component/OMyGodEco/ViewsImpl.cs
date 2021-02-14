@@ -30,6 +30,16 @@ namespace OMyGod
             );
         }
 
+        [ContextMethod("СоздатьСистемныйЛандшафт", " CreateSystemsLandscape")]
+        public SystemLandscapeViewImpl CreateSystemLandscapeView(string key, string description)
+        {
+            return new SystemLandscapeViewImpl(
+                _createdWorkspace.Views.CreateSystemLandscapeView(
+                    key, description 
+                )
+            );
+        }
+
         [ContextMethod("ДобавитьСтильЦветаЭлементу", "AddColorStyleToElement")]
         public void AddColorStyleToElement(string _value)
         {
